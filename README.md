@@ -31,7 +31,7 @@
 3. User can edit or delete the image if they have the permission.
 
 ### Admin
-1. Admin can login using email and password.
-2. Admin can change user permissions.
-Note: Create an admin account by sending a POST request to the following backend endpoint 
+1. Create an admin account by sending a POST request to the following backend endpoint 
 '{baseURL}/auth/admin/register' with the following fields in the request body 'fullName','email' and 'password'
+2. Admin can login using email and password.
+3. Admin can change user permissions.
