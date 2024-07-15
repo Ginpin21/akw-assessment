@@ -48,6 +48,7 @@
         :updatedAt="photo.updatedAt"
         :canDelete="userStore.user.canDelete"
         :canEdit="userStore.user.canEdit"
+        :userId="photo.user && photo.user?.id"
       />
     </template>
   </main>
@@ -67,6 +68,9 @@ type Photo = {
   imageName: string
   createdAt: string
   updatedAt: string
+  user?: {
+    id?:number
+  }
 }
 export default {
   data() {
@@ -77,7 +81,7 @@ export default {
           imageUrl: '',
           imageName: '',
           createdAt: '',
-          updatedAt: ''
+          updatedAt: '',
         }
       ],
       showAll: true

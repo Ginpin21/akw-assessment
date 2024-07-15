@@ -6,7 +6,7 @@
     <p class="text-lg">{{ imageName }}</p>
     <p class="">{{ new Date(createdAt).toUTCString() }}</p>
     <p class="">{{ new Date(updatedAt).toUTCString() }}</p>
-    <div class="flex flex-col items-center justify-between gap-2">
+    <div v-if="userId && userId === userStore.user.id" class="flex flex-col items-center justify-between gap-2">
       <EditPhotoModal v-if="canEdit" :id="id" :imageName="imageName" :imageURL="imageURL" />
       <button
         v-if="canDelete"
@@ -22,8 +22,10 @@
 <script setup lang="ts">
 import { PhTrash, PhPencil } from '@phosphor-icons/vue'
 import useFetch from '@/services/api'
+import { useUserStore } from '@/stores/userStore'
 import router from '@/router'
 import EditPhotoModal from './EditPhotoModal.vue'
+const userStore = useUserStore()
 </script>
 <script lang="ts">
 export default {
@@ -31,6 +33,9 @@ export default {
     id: {
       type: Number,
       required: true
+    },
+    userId: {
+      type: Number
     },
     imageURL: {
       type: String,
